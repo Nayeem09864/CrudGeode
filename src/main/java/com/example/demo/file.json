@@ -1,0 +1,132 @@
+[
+  {
+    "hasPdx": false,
+    "fieldNames": [
+      "name",
+      "id"
+    ],
+    "fieldValues": [
+      "Jon Doe",
+      1
+    ],
+    "serializationVersions": null,
+    "dsfid": 32,
+    "fieldTypes": [
+      {
+        "serializationVersions": null,
+        "dsfid": -61,
+        "simpleClassName": "Object",
+        "mapType": false,
+        "collectionType": false,
+        "structType": false
+      },
+      {
+        "serializationVersions": null,
+        "dsfid": -61,
+        "simpleClassName": "Object",
+        "mapType": false,
+        "collectionType": false,
+        "structType": false
+      }
+    ],
+    "structType": {
+      "fieldNames": [
+        "name",
+        "id"
+      ],
+      "fieldTypes": [
+        {
+          "serializationVersions": null,
+          "dsfid": -61,
+          "simpleClassName": "Object",
+          "mapType": false,
+          "collectionType": false,
+          "structType": false
+        },
+        {
+          "serializationVersions": null,
+          "dsfid": -61,
+          "simpleClassName": "Object",
+          "mapType": false,
+          "collectionType": false,
+          "structType": false
+        }
+      ],
+      "dsfid": -60,
+      "mapType": false,
+      "collectionType": false,
+      "structType": true,
+      "simpleClassName": "Struct",
+      "serializationVersions": null
+    },
+    "pdxFieldValues": [
+      "Jon Doe",
+      1
+    ]
+  },
+  {
+    "hasPdx": false,
+    "fieldNames": [
+      "name",
+      "id"
+    ],
+    "fieldValues": [
+      "Customer 2",
+      2
+    ],
+    "serializationVersions": null,
+    "dsfid": 32,
+    "fieldTypes": [
+      {
+        "serializationVersions": null,
+        "dsfid": -61,
+        "simpleClassName": "Object",
+        "mapType": false,
+        "collectionType": false,
+        "structType": false
+      },
+      {
+        "serializationVersions": null,
+        "dsfid": -61,
+        "simpleClassName": "Object",
+        "mapType": false,
+        "collectionType": false,
+        "structType": false
+      }
+    ],
+    "structType": {
+      "fieldNames": [
+        "name",
+        "id"
+      ],
+      "fieldTypes": [
+        {
+          "serializationVersions": null,
+          "dsfid": -61,
+          "simpleClassName": "Object",
+          "mapType": false,
+          "collectionType": false,
+          "structType": false
+        },
+        {
+          "serializationVersions": null,
+          "dsfid": -61,
+          "simpleClassName": "Object",
+          "mapType": false,
+          "collectionType": false,
+          "structType": false
+        }
+      ],
+      "dsfid": -60,
+      "mapType": false,
+      "collectionType": false,
+      "structType": true,
+      "simpleClassName": "Struct",
+      "serializationVersions": null
+    },
+    "pdxFieldValues": [
+      "Customer 2",
+      2
+    ]
+  }
+]

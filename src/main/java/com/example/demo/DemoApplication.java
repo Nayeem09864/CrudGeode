@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.time.LocalDate;
+import java.util.Date;
 import org.apache.geode.cache.GemFireCache;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,14 +22,19 @@ public class DemoApplication {
   }
 
   @Bean
-  ApplicationRunner runner(GemFireCache cache, CustomerRepository customerRepository) {
+  ApplicationRunner runner(GemFireCache cache, CustomerRepository customerRepository,
+                           AuthorRepository authorRepository) {
     return args -> {
       Customer jonDoe = new Customer(1L, "Jon Doe");
 
       System.out.println("----+++++------: John Doe: " + jonDoe);
       System.out.println("--------saving data---------");
-
       customerRepository.save(jonDoe);
+
+      Author author = new Author(1L, "firstName", "One", "Book One", new Date(), "2020-05-05",
+          LocalDate.now(), 300, 9.5);
+
+      authorRepository.save(author);
     };
   }
 }
