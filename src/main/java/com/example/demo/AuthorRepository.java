@@ -14,4 +14,7 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
 
   @Query("Select * from /Authors a where a.discountRate > 10")
   Iterable<Author> findAuthorByDiscountRate();
+  @Query("select sum(price) from /Authors")
+  Integer findSum();
+
 }

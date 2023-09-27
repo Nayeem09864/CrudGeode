@@ -23,7 +23,7 @@ public class DemoApplication {
 
   @Bean
   ApplicationRunner runner(GemFireCache cache, CustomerRepository customerRepository,
-                           AuthorRepository authorRepository) {
+                           AuthorRepository authorRepository, BookRepository bookRepository) {
     return args -> {
       Customer jonDoe = new Customer(1L, "Jon Doe");
 
@@ -35,6 +35,10 @@ public class DemoApplication {
           LocalDate.now(), 300, 9.5);
 
       authorRepository.save(author);
+
+      Book book = new Book(1L,"Book One", "Coauthor one");
+      bookRepository.save(book);
+
     };
   }
 }

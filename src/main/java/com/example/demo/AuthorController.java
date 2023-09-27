@@ -32,33 +32,6 @@ public class AuthorController {
   @PostMapping(path = "/postAuthor")
   public ResponseEntity<String> postCustomer(@RequestBody Author author) {
     authorRepository.save(author);
-//    System.out.println("----===-+++++ author : " + author);
-//    String queryString = "SELECT * FROM /Authors";
-//    System.out.println("-+-+-+-+ queryString: -+-+-+-+-"+queryString);
-//    Cache cache1 = new CacheCreation();
-//    // Get QueryService from Cache.
-//    QueryService queryService = cache1.getQueryService();
-//
-//    // Create the Query Object.
-//    Query query = queryService.newQuery(queryString);
-//
-//    // Execute Query locally. Returns results set.
-//    SelectResults results = null;
-//    try {
-//      results = (SelectResults) query.execute();
-//    } catch (FunctionDomainException e) {
-//      throw new RuntimeException(e);
-//    } catch (TypeMismatchException e) {
-//      throw new RuntimeException(e);
-//    } catch (NameResolutionException e) {
-//      throw new RuntimeException(e);
-//    } catch (QueryInvocationTargetException e) {
-//      throw new RuntimeException(e);
-//    }
-//    System.out.println("+-+-+-+- results: +-+-+-+ \n"+results);
-//    // Find the Size of the ResultSet.
-//    int size = results.size();
-//    System.out.println("+-+-++-Size:+-+-+-+ "+size);
     return new ResponseEntity<>("OK", HttpStatus.OK);
   }
 
@@ -66,33 +39,6 @@ public class AuthorController {
   public Iterable<Author> getAuthors() {
     Iterable<Author> authors;
     authors = authorRepository.findAll();
-
-//    String queryString = "SELECT * FROM /Authors";
-//    System.out.println("-+-+-+-+ queryString: -+-+-+-+-\n"+queryString);
-//    Cache cache1 = new CacheCreation();
-//    // Get QueryService from Cache.
-//    QueryService queryService = cache1.getQueryService();
-//
-//    // Create the Query Object.
-//    Query query = queryService.newQuery(queryString);
-//
-//    // Execute Query locally. Returns results set.
-//    SelectResults results = null;
-//    try {
-//      results = (SelectResults) query.execute();
-//    } catch (FunctionDomainException e) {
-//      throw new RuntimeException(e);
-//    } catch (TypeMismatchException e) {
-//      throw new RuntimeException(e);
-//    } catch (NameResolutionException e) {
-//      throw new RuntimeException(e);
-//    } catch (QueryInvocationTargetException e) {
-//      throw new RuntimeException(e);
-//    }
-//    System.out.println("+-+-+-+- results: +-+-+-+ \n"+results);
-//    // Find the Size of the ResultSet.
-//    int size = results.size();
-//    System.out.println("+-+-++-Size:+-+-+-+ "+size);
     return authors;
   }
 
@@ -122,7 +68,7 @@ public class AuthorController {
   public String deleteCustomer(@PathVariable Long id) {
     if (this.authorRepository.findById(id) != null) {
       authorRepository.deleteById((id));
-      return "Deteted Successfully";
+      return "Deleted Successfully";
     } else {
       return "Error";
     }
@@ -139,5 +85,10 @@ public class AuthorController {
     authorRepository.deleteById(id);
     authorRepository.save(author);
     return "Updated Successfully";
+  }
+
+  @GetMapping("/getSum")
+  public Integer getSum() {
+    return authorRepository.findSum();
   }
 }
