@@ -1,0 +1,19 @@
+create region --name=Student --type=REPLICATE
+
+
+put --key=('id':'1') --value=('name':'StudentTwo','course':'Math') --region=/Student
+put --key=('id':'2') --value=('name':'StudentOne','course':'Math101') --region=/Student
+put --key=('id':'3') --value=('name':'StudentOne','course':'English101') --region=/Student
+
+query --query ='SELECT name, course FROM /Student'
+query --query ='SELECT key, course FROM /Student'
+
+
+query --query ='SELECT DISTINCT * FROM /Student s, /Course c WHERE s.course = c.name'
+
+query --query ='SELECT DISTINCT * FROM /Course c, /Student s WHERE s.course = c.name'
+
+query --query ='SELECT DISTINCT name FROM /Course c, /Student s WHERE s.course = c.name'
+
+
+get --key=('id':'1') --region= Student

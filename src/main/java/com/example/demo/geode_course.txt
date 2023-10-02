@@ -1,0 +1,4 @@
+create region --name=Course --type=REPLICATE
+
+put --key=('id':'1') --value=('name':'Math101','title':'DiscreteMathematics') --region=/Course
+

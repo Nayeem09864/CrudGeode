@@ -1,0 +1,166 @@
+query --query ='select name,id from /Customers c where c.id =1'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
+
+
+//Where
+
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.id = 1'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
+
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.price > 300'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.price > 30'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.discountRate =11.5'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.secondEdition = 2020-04-05'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.secondEdition = 2020-04-05'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.localDate = [2022,9,26]'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.discountRate > 10'
+
+
+
+//Order By
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors order by price'
+
+
+
+//Distinct
+query --query ='select distinct price from /Authors'
+
+
+//Delete
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors order by price'
+
+
+
+//SUM
+query --query ='select sum(price) from /Authors'
+
+
+//AND
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors where discountRate > 5 and price >100'
+
+
+//OR
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors where discountRate > 10 or price >300'
+
+
+//NOT is not supported
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors where not price =320'
+
+
+//NULL values
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors where price = null'
+
+//Top is not working
+SELECT TOP 3 * FROM Customers;
+
+query --query ='select top 3 id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
+
+
+//Limit
+SELECT * FROM Customers
+LIMIT 3;
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors limit 2'
+
+//Min and Max
+SELECT MIN(Price)
+FROM Products;
+
+query --query ='select min(price) from /Authors'
+query --query ='select max(price) from /Authors'
+
+
+//Export Data
+export data --region=Authors --file= exported_from_author_region.gfd --member=server1
+
+
+//Put
+
+put --key=('1') --value=('Hello World!!') --region=Authors
+
+put --key='price' --value='150' --region=Authors
+
+remove --region=/Authors --all=true
+
+remove --region=/Authors --key= 'bookName': 'Hello World!!'
+
+put --key='1' --value='Hello World' --region=Authors
+
+remove --region=/Authors --key= "dsfid":31
+
+remove --region=/Authors --key= '1'
+
+remove --region=/Authors --key= 'price'
+remove --region=/Authors --key= 'bookName'
+
+put --key='key1' --value='"id": 4, "firstName": "Name", "lastName": "Four", "bookName": "Book Four", "publishingDate": "2016-09-26T11:12:38.276+00:00", "secondEdition": "2020-01-05", "localDate": "2021-06-22", "price": 320, "discountRate": 11.5 ' --region=Authors
+
+
+
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors where discountRate > 5 and price >100'
+
+
+//Union not working
+
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+query --query ='select bookName from /Authors union select bookName from /Books order by bookName'
+
+query --query ='select bookName from /Authors union select bookName from /Books'
+
+query --query ='select bookName from /Authors union bookName from /Books'
+
+//Group by
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID) DESC;
+
+query --query ='select count(id),price from /Authors GROUP BY price, ORDER BY COUNT(id) DESC'
+query --query ='select count(id),price from /Authors GROUP BY price, ORDER BY COUNT(id)'
+
+query --query ='select id from /Authors (GROUP BY) price'
+
+
+//bookName indexed
+
+query --query ='select id,bookName, coAuthor from /Books order by bookName'
+
+//Join
+
+
+SELECT DISTINCT *
+FROM /investors inv, /securities sc, /orders or,
+inv.ordersPlaced inv_op, or.securities or_sec, sc.investors sc_invs
+    WHERE inv_op.orderID = or.orderID
+    AND or_sec.secID = sc.secID
+                AND inv.investorID = sc_invs.investorID
+
+
+
+SELECT DISTINCT * FROM /Authors a, /Books b, b.bookName
+    WHERE a.bookName = b.bookName
+
+
+query --query ='SELECT DISTINCT * FROM /Authors a, /Books b, b.bookName WHERE a.bookName = b.bookName'
+
+query --query ='SELECT bookName FROM /Authors a, /Books b, b.bookName WHERE a.bookName = b.bookName'
+
+query --query ='SELECT DISTINCT * FROM /Authors a, /Books b, b.bookName ON a.bookName = b.bookName'

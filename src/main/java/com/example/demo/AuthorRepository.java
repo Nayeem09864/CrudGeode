@@ -17,4 +17,7 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
   @Query("select sum(price) from /Authors")
   Integer findSum();
 
+  @Query("select sum(price) from /Authors")
+  Integer getStudent();
+
 }

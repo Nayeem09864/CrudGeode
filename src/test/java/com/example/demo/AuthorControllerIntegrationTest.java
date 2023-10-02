@@ -113,11 +113,6 @@ public class AuthorControllerIntegrationTest {
 
   }
 
-//  @GetMapping("/getSum")
-//  public Integer getSum() {
-//    return authorRepository.findSum();
-//  }
-
   @Test
   void whenGetSum_thenOk() {
     ResponseEntity<Integer> responseEntity = restTemplate.getForEntity("/getSum", Integer.class);

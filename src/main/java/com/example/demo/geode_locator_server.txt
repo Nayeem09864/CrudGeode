@@ -1,0 +1,13 @@
+start locator --name = locator1
+start server --name = server1
+
+connect
+
+stop locator --name=locator1
+
+stop server --name=server1
+
+
+list members
+
+list regions
