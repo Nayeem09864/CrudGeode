@@ -1,0 +1,43 @@
+Keep your distributed cache in sync with an outside data source by programming and installing application plug-ins for your region.
+
+    Overview of Outside Data Sources
+
+    Apache Geode has application plug-ins to read data into the cache and write it out.
+
+    Configuring Database Connections Using JNDI.
+
+    Use JNDI to maintain a connection pool that includes outside data sources.
+
+    How Data Loaders Work
+
+    By default, a region has no data loader defined. Plug an application-defined loader into any region by setting the region attribute cache-loader on the members that host data for the region.
+
+    Implement a Data Loader
+
+    Program a data loader and configure your region to use it.
+
+
+
+
+   *********************************
+   Configuring Database Connections Using JNDI (Java Naming and Directory Interface)
+
+   ---------------------------JNDI------------------------------
+   (In summary, JNDI is a Java API that provides a standard way for Java applications to
+   interact with naming and directory services. It simplifies
+   the process of locating and accessing various resources in a distributed environment. )
+
+To connect to external databases, for example when using JTA transactions, you can configure database JNDI data sources in cache.xml. The DataSource object points to either a JDBC connection or, more commonly, a JDBC connection pool. The connection pool is usually preferred, because a program can use and reuse a connection as long as necessary and then free it for another thread to use.
+
+The following list shows DataSource connection types used in JTA transactions:
+
+    XAPooledDataSource. Pooled SQL connections.
+    ManagedDataSource. JNDI binding type for the J2EE Connector Architecture (JCA) ManagedConnectionFactory.
+    PooledDataSource. Pooled SQL connections.
+    SimpleDataSource. Single SQL connection. No pooling of SQL connections is done. Connections are generated on the fly and cannot be reused.
+
+The jndi-name attribute of the jndi-binding element is the key binding parameter. If the value of jndi-name is a DataSource, it is bound as java:/myDatabase, where myDatabase is the name you assign to your data source. If the data source cannot be bound to JNDI at runtime, Geode logs a warning. For information on the DataSource interface, see: http://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html
+
+Geode supports JDBC 2.0 and 3.0.
+
+Note: Include any data source JAR files in your CLASSPATH.

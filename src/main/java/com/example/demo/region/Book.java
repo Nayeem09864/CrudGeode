@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.region;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.mapping.annotation.Indexed;

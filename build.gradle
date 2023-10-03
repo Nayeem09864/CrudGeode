@@ -26,6 +26,9 @@ dependencies {
 	implementation 'org.springframework.geode:spring-geode-starter'
 	implementation 'org.apache.geode:geode-core'
     testImplementation 'junit:junit:4.13.1'
+//	implementation group: 'org.springframework.geode', name: 'spring-boot-starter-data-geode', version: '1.7.5'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-geode'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-geode'
 }
 
 tasks.named('test') {

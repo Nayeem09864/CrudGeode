@@ -11,3 +11,6 @@ stop server --name=server1
 list members
 
 list regions
+
+localhost: 10.44.34.180
+port: 10334

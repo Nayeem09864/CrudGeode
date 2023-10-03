@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.controller;
 
+import com.example.demo.repository.BookRepository;
+import com.example.demo.region.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ public class BookController {
   public String deleteBook(@PathVariable Long id) {
     if (this.bookRepository.findById(id) != null) {
       bookRepository.deleteById((id));
-      return "Deteted Successfully";
+      return "Deleted Successfully";
     } else {
       return "Error";
     }

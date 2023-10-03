@@ -1,16 +1,7 @@
-package com.example.demo;
+package com.example.demo.controller;
 
-import static com.sun.corba.se.impl.util.RepositoryId.cache;
-
-import org.apache.geode.cache.Cache;
-import org.apache.geode.cache.query.FunctionDomainException;
-import org.apache.geode.cache.query.NameResolutionException;
-import org.apache.geode.cache.query.Query;
-import org.apache.geode.cache.query.QueryInvocationTargetException;
-import org.apache.geode.cache.query.QueryService;
-import org.apache.geode.cache.query.SelectResults;
-import org.apache.geode.cache.query.TypeMismatchException;
-import org.apache.geode.internal.cache.xmlcache.CacheCreation;
+import com.example.demo.repository.AuthorRepository;
+import com.example.demo.region.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

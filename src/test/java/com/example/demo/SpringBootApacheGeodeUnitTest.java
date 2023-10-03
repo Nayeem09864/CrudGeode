@@ -2,6 +2,8 @@ package com.example.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.demo.region.Author;
+import com.example.demo.repository.AuthorRepository;
 import java.time.LocalDate;
 import java.util.Date;
 import org.junit.jupiter.api.Assertions;

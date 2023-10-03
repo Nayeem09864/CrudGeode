@@ -1,0 +1,19 @@
+[
+  {
+"Name": "Aerospike DBS",
+"Developer": "Aerospike Company",
+"Availability": "2012",
+"Client Interface": "Java, C#, C, Python, Go, Node.js, Perl, libevent, PHP, Ruby, Rust ",
+"License": "Open Source (AGPL) ",
+"Description": "Flash-optimized in-memory open source NoSQL database. "
+},
+{
+"Name": "ALTIBASE HDB",
+"Developer": "Altibase Corporation",
+"Availability": "1999",
+"Client Interface": "Java, C#, C, Python, Go, Node.js, Perl, libevent, PHP, Ruby, Rust ",
+"License": "Open Source (AGPL) ",
+"Description": "Flash-optimized in-memory open source NoSQL database. "
+}
+
+]
