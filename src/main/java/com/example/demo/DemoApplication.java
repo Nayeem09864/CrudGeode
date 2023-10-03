@@ -43,6 +43,15 @@ public class DemoApplication {
           LocalDate.now(), 300, 9.5);
 
       authorRepository.save(author);
+      author = new Author(2L, "firstName", "Two", "Book Two", new Date(), "2020-15-02",
+          LocalDate.now(), 320, 8.5);
+
+      authorRepository.save(author);
+
+      author = new Author(3L, "firstName", "Three", "Book Three", new Date(), "2020-15-03",
+          LocalDate.now(), 323, 8.3);
+
+      authorRepository.save(author);
 
       Book book = new Book(1L,"Book One", "Coauthor one");
       bookRepository.save(book);
