@@ -41,3 +41,126 @@ The jndi-name attribute of the jndi-binding element is the key binding parameter
 Geode supports JDBC 2.0 and 3.0.
 
 Note: Include any data source JAR files in your CLASSPATH.
+
+
+
+--------------------Setup----------------
+Configuring database connections using JNDI (Java Naming and Directory Interface) in Apache Geode involves setting up JNDI data sources that allow Geode to access external databases. This is commonly used in scenarios where you want Geode to interact with a relational database or any other data source.
+
+Here are the general steps to configure database connections using JNDI in Apache Geode:
+
+    Configure External Database:
+        Ensure that your external database is properly configured and accessible.
+
+    Setup JNDI Data Source:
+        Define a JNDI data source that points to your external database. This involves specifying the database connection properties like URL, username, password, etc.
+        This configuration is usually done in an external configuration file or within your Geode server's configuration.
+
+    Geode JNDI Configuration:
+        Configure Apache Geode to use JNDI. This involves specifying the JNDI properties in your Geode cache.xml or gemfire.properties file.
+
+    Deploy JNDI Configuration:
+        Deploy the JNDI configuration along with your Geode server. This can involve placing the configuration files in the appropriate directories.
+
+    Use JNDI in Geode Code:
+        In your Geode code, you can now use JNDI to obtain database connections or other resources.
+
+Here is a simplified example:
+
+<!-- JNDI configuration in cache.xml -->
+<cache>
+  <pdx>
+    <read-serialized>true</read-serialized>
+  </pdx>
+
+  <jndi-binding>
+    <entry name="jdbc/mydb" value="java:comp/env/jdbc/mydb"/>
+  </jndi-binding>
+</cache>
+
+In this example, a JNDI entry named "jdbc/mydb" is configured to map
+to the JNDI name "java:comp/env/jdbc/mydb." Your database connection
+pool or data source would typically be registered under the JNDI name
+"java:comp/env/jdbc/mydb."
+
+-------------------code------------------
+// Using JNDI in Geode code to obtain a database connection
+Context ctx = new InitialContext();
+DataSource dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/mydb");
+Connection connection = dataSource.getConnection();
+
+Please note that the exact steps and configurations can vary based on the
+ specific database, JNDI provider, and Geode setup you are using. Always
+ refer to the documentation of the database, JNDI provider, and Geode for
+  detailed and accurate configuration steps.
+
+
+
+  --------------------****************-------------------
+Synchronizing Apache Geode with an external data source involves implementing a data synchronization mechanism to ensure consistency between Geode and the external system. Below are general steps to achieve this synchronization:
+1. Identify External Data Source:
+
+Identify the external data source you want to synchronize with Apache Geode. This could be a relational database, another caching system, or any other data store.
+2. Define Data Model:
+
+Ensure that the data model in Geode aligns with the data model in the external data source. Define regions (caches) and key-value pairs that match the corresponding entities in the external system.
+3. Implement Data Synchronization Logic:
+
+Develop logic to synchronize data between Geode and the external data source. This may involve creating listeners, triggers, or other mechanisms to detect changes in one system and propagate them to the other.
+4. Event Handling in Geode:
+
+In Geode, use event listeners to capture data changes within the cache. Implement listeners that detect changes (inserts, updates, deletes) and trigger corresponding actions for data synchronization.
+
+Example in Java:
+
+java
+
+cache.getRegion("exampleRegion").getAttributesMutator().addCacheListener(new YourCacheListener());
+
+5. External System Integration:
+
+In the external system, implement mechanisms to detect changes and trigger events that notify the Geode system about the changes. This could involve database triggers, change data capture (CDC) mechanisms, or other event-driven approaches.
+6. Distributed Transactions:
+
+If your synchronization involves transactions spanning both Geode and the external system, consider using distributed transactions. Geode supports distributed transactions involving multiple cache servers.
+7. Conflict Resolution:
+
+Determine how conflicts will be resolved if updates occur simultaneously in both Geode and the external system. Implement conflict resolution strategies to ensure data consistency.
+8. Testing:
+
+Thoroughly test your synchronization logic in various scenarios, including concurrent updates, system failures, and network issues.
+9. Monitoring and Logging:
+
+Implement monitoring and logging to track synchronization activities. This is crucial for debugging and ensuring that the synchronization process is working as expected.
+10. Security Considerations:
+
+Consider security aspects such as authentication and authorization when accessing the external data source. Ensure that your synchronization process complies with security policies.
+11. Performance Optimization:
+
+Optimize the synchronization process for performance, considering factors like data volume, network latency, and the frequency of updates.
+12. Documentation:
+
+Document the synchronization process, including the data model, synchronization logic, and any configurations. This documentation is valuable for maintenance and troubleshooting.
+
+Note: The specifics of the implementation will depend on the nature of the external data source, synchronization requirements, and the overall system architecture.
+
+
+
+
+------------------------- jdbc - jar ---------------------
+
+implementation 'org.postgresql:postgresql:14.9'
+
+github- "https://github.com/apache/geode-examples/tree/develop/jdbc"
+{
+create data-source --name=mysql_data_source --url="jdbc:mysql://localhost/geode_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" --username=root --password="changeme"
+
+create jdbc-mapping --data-source=mysql_data_source --region=Parent --table=parent --pdx-name=org.apache.geode_examples.jdbc.Parent --catalog=geode_db --id=id
+}
+
+-----------------------GFSH------------------
+create data-source --name=geode_db@localhost --url="jdbc:postgresql://localhost:5432/geode_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+
+create data-source --name=geode_db@localhost --url="jdbc:postgresql://localhost:5432/geode_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC" --username=postgres --password="Admin@1234."
+
+create data-source --name=geode_db@localhost --url="jdbc:postgresql://localhost:5432/geode_db" --username=postgres --password="Admin@1234."

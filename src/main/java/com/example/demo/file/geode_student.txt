@@ -7,7 +7,7 @@ put --key=('id':'3') --value=('name':'StudentOne','course':'English101') --regio
 
 query --query ='SELECT name, course FROM /Student'
 query --query ='SELECT key, course FROM /Student'
-
+query --query ='SELECT * FROM /Student'
 
 query --query ='SELECT DISTINCT * FROM /Student s, /Course c WHERE s.course = c.name'
 
@@ -17,3 +17,6 @@ query --query ='SELECT DISTINCT name FROM /Course c, /Student s WHERE s.course =
 
 
 get --key=('id':'1') --region= Student
+
+---------------------- export data -------------------
+export data --region=Student --file=student.gfd --member=server1
