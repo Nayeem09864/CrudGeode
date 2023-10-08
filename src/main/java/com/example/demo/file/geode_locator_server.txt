@@ -7,7 +7,6 @@ stop locator --name=locator1
 
 stop server --name=server1
 
-
 list members
 
 list regions

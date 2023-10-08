@@ -8,6 +8,7 @@ import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.CustomerRepository;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import org.apache.geode.cache.GemFireCache;
 import org.apache.geode.cache.execute.FunctionContext;
@@ -132,17 +133,19 @@ public class DemoApplication {
 //
 //      } while (retryTransaction);
 
-
       /**
        * Atomically reduce inventory quantity
        */
-
 
       ForeignStudent foreignStudent = new ForeignStudent(1,"ForeignStudentOne");
       TransactionalFunction transactionalFunction =new TransactionalFunction();
       FunctionContext<ForeignStudent> functionContext;
 //      transactionalFunction.execute(functionContext);
 
+
+      Date fromDate = new Date();
+      Date toDate = new Date();
+      Long daysDifference = toDate.getTime() -fromDate.getTime();
 
     };
   }

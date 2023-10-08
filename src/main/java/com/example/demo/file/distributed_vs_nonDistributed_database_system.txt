@@ -1,0 +1,75 @@
+The primary difference between distributed and non-distributed databases lies in
+how they manage and store data across multiple nodes or locations. Here's a
+breakdown of the key distinctions:
+Distributed Database:
+
+    Data Distribution:
+        Definition: A distributed database is a database that spans multiple
+        locations or nodes, and the data is distributed across these nodes.
+        Data Storage: Data is divided and stored on different machines or servers.
+        Examples: Apache Cassandra, Amazon DynamoDB, Google Cloud Spanner.
+
+    Scalability:
+        Horizontal Scalability: Distributed databases are designed to scale
+        horizontally, adding more nodes to the network to handle increased load.
+
+    Performance:
+        Parallel Processing: Distributed databases can perform parallel processing,
+        as each node can operate independently, leading to improved performance.
+
+    Fault Tolerance:
+        Redundancy: Distributed databases often incorporate redundancy and
+        replication to ensure fault tolerance. If one node fails, data is still
+        available from other nodes.
+
+    Consistency Models:
+        Consistency Challenges: Achieving strong consistency in a distributed
+        environment can be challenging due to the need for coordination between nodes.
+
+    Data Latency:
+        Network Latency: As data is distributed, network latency can impact the
+        speed of data retrieval and updates.
+
+Non-Distributed Database (Centralized Database):
+
+    Data Location:
+        Single Location: A non-distributed or centralized database stores all its
+        data in a single location or server.
+
+    Scalability:
+        Vertical Scalability: Scaling a non-distributed database typically involves
+        increasing the capacity of the existing server (vertical scaling).
+
+    Performance:
+        Limited Parallel Processing: Performance improvements are limited to the
+        capabilities of a single server, as parallel processing is restricted.
+
+    Fault Tolerance:
+        Single Point of Failure: A centralized database is more vulnerable to a
+        single point of failure. If the server goes down, the entire system becomes
+        unavailable.
+
+    Consistency Models:
+        Easier Consistency: Achieving strong consistency is often easier in a
+        centralized database, as there's a single point of control.
+
+    Data Latency:
+        Lower Latency: Since all data is stored in one location, data retrieval
+        and updates typically have lower latency compared to distributed databases.
+
+Use Cases:
+
+    Distributed Databases:
+        Suitable for applications that require high scalability, fault tolerance,
+        and the ability to handle large amounts of data across multiple locations.
+        Commonly used in cloud-based and global applications.
+
+    Non-Distributed Databases:
+        Appropriate for smaller applications with lower scalability demands where
+        data can be effectively managed within a single server.
+        Often used in traditional, on-premises setups.
+
+In summary, the choice between distributed and non-distributed databases depends
+on factors such as scalability requirements, fault tolerance, and the geographic
+distribution of users and data. Each approach has its advantages and challenges
+based on the specific needs of the application.

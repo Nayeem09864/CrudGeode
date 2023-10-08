@@ -1,0 +1,57 @@
+In Apache Geode, PDX (Portable Data eXchange) is a serialization framework that
+allows you to serialize and deserialize Java objects in a way that is efficient,
+versioned, and portable across different Geode servers and clients.
+
+Here are key aspects of PDX in Apache Geode:
+
+    Efficiency: PDX serialization is designed to be efficient in terms of both time and
+    space. It uses a binary format that reduces the amount of data transmitted over the
+    network and speeds up serialization and deserialization processes.
+
+    Versioning: PDX supports versioning, allowing you to evolve your data classes without
+    breaking compatibility between versions. This is crucial in distributed systems where
+    different nodes may run different versions of your application.
+
+    Schema-less: PDX is schema-less, meaning you don't need to provide explicit serialization
+    code or a schema for your classes. Geode can dynamically discover the fields of your
+    objects.
+
+    Java and Non-Java Clients: PDX allows for interoperability between Java and non-Java
+    clients. If, for example, you have a .NET client and a Java server, they can exchange
+    data using PDX serialization.
+
+    Disk Persistence: PDX serialization is used in Geode's disk persistence. When you store
+    objects in a region and that region is configured for disk persistence, the objects are
+    serialized using PDX.
+
+Here's a brief example of how you might use PDX in a Geode application:
+
+java
+
+// Define a PDXSerializable class
+public class Person implements PdxSerializable {
+    private String name;
+    private int age;
+
+    // Implement PdxSerializable methods
+    @Override
+    public void toData(PdxWriter writer) {
+        writer.writeString("name", name);
+        writer.writeInt("age", age);
+    }
+
+    @Override
+    public void fromData(PdxReader reader) {
+        name = reader.readString("name");
+        age = reader.readInt("age");
+    }
+}
+
+// Usage in a Geode region
+Region<Long, Person> region = // ... obtain the region
+Person person = new Person("John Doe", 30);
+region.put(1L, person);
+
+In this example, the Person class implements the PdxSerializable interface, providing methods
+to serialize and deserialize the object. When instances of Person are stored in a Geode region,
+they are serialized using PDX.
