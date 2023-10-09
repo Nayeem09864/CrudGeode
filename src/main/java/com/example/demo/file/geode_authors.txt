@@ -1,0 +1,40 @@
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
+
+
+//Where
+
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.id = 1'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
+
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.price > 300'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.price > 30'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.discountRate =11.5'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.secondEdition = 2020-04-05'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.secondEdition = 2020-04-05'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.localDate = [2022,9,26]'
+
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors a where a.discountRate > 10'
+
+
+
+//Order By
+query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors order by price'
+
+
+
+//Distinct
+query --query ='select distinct price from /Authors'
+
+---------------------- export data -------------------
+export data --region = Authors --file = authors.gfd --member = server1    // will create an authors.gfd file in server1 from Authors region
+
+---------------------- import data -------------------
+import data --region = Authors --file = authors.gfd --member = server1   // will import an authors.gfd file in server1 to Authors region

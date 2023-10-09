@@ -1,0 +1,1 @@
+query --query ='select id,name from /ForeignStudents'

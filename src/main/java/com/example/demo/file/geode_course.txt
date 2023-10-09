@@ -4,3 +4,9 @@ put --key=('id':'1') --value=('name':'Math101','title':'DiscreteMathematics') --
 put --key=('id':'2') --value=('name':'English101','title':'BasicEnglish') --region=/Course
 
 get --key=('id':'1') --region= Course
+
+---------------------- export data -------------------
+export data --region = Course --file = course.gfd --member = server1
+
+---------------------- import data -------------------
+import data --region = Course --file = student.gfd --member = server1

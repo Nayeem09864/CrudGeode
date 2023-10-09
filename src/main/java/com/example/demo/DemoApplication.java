@@ -10,6 +10,8 @@ import com.example.demo.repository.CustomerRepository;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import org.apache.geode.cache.CacheTransactionManager;
+import org.apache.geode.cache.CommitConflictException;
 import org.apache.geode.cache.GemFireCache;
 import org.apache.geode.cache.execute.FunctionContext;
 import org.springframework.boot.ApplicationRunner;
@@ -36,8 +38,6 @@ public class DemoApplication {
     return args -> {
       Customer jonDoe = new Customer(1L, "Jon Doe");
 
-      System.out.println("----+++++------: John Doe: " + jonDoe);
-      System.out.println("--------saving data---------");
       customerRepository.save(jonDoe);
 
       Author author = new Author(1L, "firstName", "One", "Book One", new Date(), "2020-05-05",
@@ -58,95 +58,32 @@ public class DemoApplication {
       bookRepository.save(book);
 
 
+      CacheTransactionManager txManager =
+          cache.getCacheTransactionManager();
 
-//      CacheTransactionManager txManager =
-//          cache.getCacheTransactionManager();
-//
-//      try {
-//        txManager.begin();
-//
-//        txManager.commit();
-//      } catch (CommitConflictException conflict) {
-//        // ... do necessary work for a transaction that failed on commit
-//      } finally {
-//        // All other exceptions will be handled by the caller.
-//        // Examples of some exceptions: the data is not colocated, a rebalance
-//        // interfered with the transaction, or the server is gone.
-//        // Any exception thrown by a method other than commit() needs
-//        // to do a rollback to avoid leaking the transaction state.
-//        if(txManager.exists()) {
-//          txManager.rollback();
-//        }
-//      }
+      try {
+        txManager.begin();
+        author = new Author(5L, "firstName", "Five", "Book Five", new Date(), "2020-15-03",
+            LocalDate.now(), 340, 11.5);
 
-      // inputs needed for this transaction; shown as variables for simplicity
-//      final String customer = "Customer1";
-//      final Integer purchase = 1000;
-//
-//// region set up shown to promote understanding
-//      Cache cache1 = new CacheFactory().create();
-//      Pool pool = PoolManager.createFactory()
-//          .addLocator("localhost", 10334)
-//          .create("pool-name");
-//      Region<String, Integer> cash =
-//          cache1.createClientRegionFactory(ClientRegionShortcut.PROXY)
-//              .setPoolName(pool.getName())
-//              .create("cash");
-////      Region<String, Integer> cash = cache1.createRegionFactory(ClientRegionShortcut.PROXY).setPoolName(pool);
-//
-//      Region<String, Integer> trades =
-//          cache1.createClientRegionFactory(ClientRegionShortcut.PROXY)
-//              .setPoolName(pool.getName())
-//              .create("trades");
-//
-//// transaction code
-//      CacheTransactionManager txManager = cache.getCacheTransactionManager();
-//      boolean retryTransaction = false;
-//      do {
-//        try {
-//          txManager.begin();
-//
-//          // Subtract out the cost of the trade for this customer's balance
-//          Integer cashBalance = cash.get(customer);
-//          Integer newBalance = (cashBalance != null ? cashBalance : 0) - purchase;
-//          cash.put(customer, newBalance);
-//
-//          // Add in the cost of the trade for this customer
-//          Integer tradeBalance = trades.get(customer);
-//          newBalance = (tradeBalance != null ? tradeBalance : 0) + purchase;
-//          trades.put(customer, newBalance);
-//
-//          txManager.commit();
-//          retryTransaction = false;
-//        }
-//        catch (CommitConflictException conflict) {
-//          // entry value changed causing a conflict for this customer, so try again
-//          retryTransaction = true;
-//        } finally {
-//          // All other exceptions will be handled by the caller.
-//          // Any exception thrown by a method other than commit() needs
-//          // to do a rollback to avoid leaking the transaction state.
-//          if(txManager.exists()) {
-//            txManager.rollback();
-//          }
-//        }
-//
-//      } while (retryTransaction);
+        authorRepository.save(author);
 
-      /**
-       * Atomically reduce inventory quantity
-       */
+        Book book2 = new Book(2L, "Book Two", "Coauthor Two");
+        bookRepository.save(book2);
 
-      ForeignStudent foreignStudent = new ForeignStudent(1,"ForeignStudentOne");
-      TransactionalFunction transactionalFunction =new TransactionalFunction();
-      FunctionContext<ForeignStudent> functionContext;
-//      transactionalFunction.execute(functionContext);
+        Book book3 = new Book(3L, "Book Three", "Coauthor Three");
+        bookRepository.save(book3);
 
-
-      Date fromDate = new Date();
-      Date toDate = new Date();
-      Long daysDifference = toDate.getTime() -fromDate.getTime();
-
+        txManager.commit();
+      } catch (CommitConflictException conflict) {
+        System.out.println("Transaction Failed");
+      } finally {
+        System.out.println("In finally block");
+        if (txManager.exists()) {
+          System.out.println("txManager exists");
+          txManager.rollback();
+        }
+      }
     };
   }
 }

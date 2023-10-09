@@ -17,4 +17,7 @@ query --query ='SELECT DISTINCT name FROM /Course c, /Student s WHERE s.course =
 get --key=('id':'1') --region= Student
 
 ---------------------- export data -------------------
-export data --region=Student --file=student.gfd --member=server1
+export data --region = Student --file = student.gfd --member = server1
+
+---------------------- import data -------------------
+import data --region = Student --file = student.gfd --member = server1

@@ -1,0 +1,3 @@
+export data --region = Student --file = student.gfd --member=server1
+
+import data --region=Student --file=student.gfd --member = server1
