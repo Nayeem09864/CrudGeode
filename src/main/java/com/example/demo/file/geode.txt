@@ -24,6 +24,16 @@ start locator --name=value [--bind-address=value] [--force(=value)]
  start locator --name=value [--bind-address=value]
 
 
+--------------- Connection to remote ------------
+IP: 10.42.65.242
+SSH user: topu_5360
+pass: topu_5360@,./
+
+ssh topu_5360@10.42.65.242
+
+--------------Post list----------------
+netstat -an
+
 start locator --name = locator1
 start server --name = server1
 
@@ -52,6 +62,11 @@ Connection Endpoints
 --------------------
 10.44.34.180[1099]
 
+------------check If already 40404 port is in use or not-----------
+netstat -an | grep 40404
+
+------------------ find the process that is using the specified port(40404)---------
+sudo lsof -i :40404
 
 
 ------------------- create region --------------------
@@ -80,4 +95,3 @@ LOCAL_PERSISTENT_OVERFLOW
 PARTITION_PROXY
 PARTITION_PROXY_REDUNDANT
 REPLICATE_PROXY
-

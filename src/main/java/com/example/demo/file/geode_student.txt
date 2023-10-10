@@ -1,9 +1,9 @@
 create region --name=Student --type=REPLICATE
 
 
-put --key=('id':'1') --value=('name':'StudentTwo','course':'Math') --region=/Student
-put --key=('id':'2') --value=('name':'StudentOne','course':'Math101') --region=/Student
-put --key=('id':'3') --value=('name':'StudentOne','course':'English101') --region=/Student
+put --key=('id':'1') --value=('name':'StudentOne','course':'Math') --region=/Student
+put --key=('id':'2') --value=('name':'StudentTwo','course':'Math101') --region=/Student
+put --key=('id':'3') --value=('name':'StudentThree','course':'English101') --region=/Student
 
 query --query ='SELECT * FROM /Student'
 

@@ -1,0 +1,10 @@
+create region --name=Customers --type=PARTITION
+
+query --query ='select id,name from /Customers'
+
+---------------------- export data -------------------
+export data --region = Customers --file = customers.gfd --member = server1
+
+---------------------- import data -------------------
+import data --region = Customers --file = customers.gfd --member = server1
+

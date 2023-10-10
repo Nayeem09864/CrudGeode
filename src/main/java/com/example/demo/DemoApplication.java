@@ -18,10 +18,13 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.gemfire.GemfireTemplate;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
 import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.geode.config.annotation.UseMemberName;
 
+@Configuration
 @SpringBootApplication
 @EnableClusterAware
 @EnableEntityDefinedRegions(basePackageClasses = Customer.class)
@@ -36,9 +39,15 @@ public class DemoApplication {
   ApplicationRunner runner(GemFireCache cache, CustomerRepository customerRepository,
                            AuthorRepository authorRepository, BookRepository bookRepository) {
     return args -> {
-      Customer jonDoe = new Customer(1L, "Jon Doe");
+      Customer customer = new Customer(1L, "CustomerOne");
 
-      customerRepository.save(jonDoe);
+      customerRepository.save(customer);
+
+      customer = new Customer(2L, "CustomerTwo");
+      customerRepository.save(customer);
+
+      customer = new Customer(3L, "CustomerThree");
+      customerRepository.save(customer);
 
       Author author = new Author(1L, "firstName", "One", "Book One", new Date(), "2020-05-05",
           LocalDate.now(), 300, 9.5);
@@ -57,6 +66,9 @@ public class DemoApplication {
       Book book = new Book(1L,"Book One", "Coauthor one");
       bookRepository.save(book);
 
+      /***
+       * Transaction
+       */
 
       CacheTransactionManager txManager =
           cache.getCacheTransactionManager();

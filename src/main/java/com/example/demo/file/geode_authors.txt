@@ -1,3 +1,5 @@
+create region --name=Authors --type=PARTITION
+
 query --query ='select id,firstName, lastName, bookName, publishingDate, secondEdition, localDate, price, discountRate from /Authors'
 
 
@@ -34,7 +36,9 @@ query --query ='select id,firstName, lastName, bookName, publishingDate, secondE
 query --query ='select distinct price from /Authors'
 
 ---------------------- export data -------------------
-export data --region = Authors --file = authors.gfd --member = server1    // will create an authors.gfd file in server1 from Authors region
+// will create an authors.gfd file in server1 from Authors region
+export data --region = Authors --file = authors.gfd --member = server1
 
 ---------------------- import data -------------------
-import data --region = Authors --file = authors.gfd --member = server1   // will import an authors.gfd file in server1 to Authors region
+// will import an authors.gfd file in server1 to Authors region
+import data --region = Authors --file = authors.gfd --member = server1

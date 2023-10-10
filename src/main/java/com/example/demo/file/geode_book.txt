@@ -1,1 +1,11 @@
+create region --name=Books --type=PARTITION
+
 query --query ='select id,bookName, coAuthor from /Books'
+
+---------------------- export data -------------------
+// will create a books.gfd file in server1 from Authors region
+export data --region = Books --file = books.gfd --member = server1
+
+---------------------- import data -------------------
+// will import a books.gfd file in server1 to Authors region
+import data --region = Books --file = books.gfd --member = server1

@@ -9,4 +9,4 @@ get --key=('id':'1') --region= Course
 export data --region = Course --file = course.gfd --member = server1
 
 ---------------------- import data -------------------
-import data --region = Course --file = student.gfd --member = server1
+import data --region = Course --file = course.gfd --member = server1
