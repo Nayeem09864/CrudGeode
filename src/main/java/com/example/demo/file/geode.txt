@@ -28,7 +28,7 @@ pass: topu_5360@,./
 ssh topu_5360@10.42.65.242
 
 --------------Post list----------------
-netstat -an
+netstat -an | grep 10334
 
 start locator --name = locator1
 start server --name = server1
