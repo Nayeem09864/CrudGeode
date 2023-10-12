@@ -1,0 +1,24 @@
+Apache Geode and Apache GemFire are essentially the same distributed in-memory data grid (IMDG) system but with
+different names due to historical reasons.
+
+Here's a bit of history:
+    GemFire: GemFire was originally developed by GemStone Systems, Inc. It's a distributed data management platform that
+    provides real-time, consistent access to data-intensive applications throughout widely distributed cloud
+    architectures.
+
+    Acquisition by VMware: VMware acquired GemStone Systems in 2010 and continued the development of GemFire.
+
+    Open Sourcing as Apache Geode: In 2015, VMware open-sourced GemFire under the Apache Software Foundation. It became
+    known as Apache Geode. The decision to open source the project was aimed at fostering a larger community and
+    accelerating development through collaborative efforts.
+
+    Parallel Development: After the open-source release, both Apache Geode and VMware GemFire continued to evolve
+    somewhat independently, but their core functionality and API compatibility remained intact.
+
+    Apache Geode as the Active Project: Over time, the Apache Geode project gained more traction and became the primary
+    focus for new features and enhancements. VMware GemFire remains available, but Apache Geode is the more actively
+    developed open-source version.
+
+In summary, Apache Geode and Apache GemFire refer to the same distributed in-memory data grid technology, with Apache
+Geode being the open-source version and GemFire being the earlier proprietary version. If you're starting a new project
+or evaluating these technologies, it's generally recommended to use Apache Geode.

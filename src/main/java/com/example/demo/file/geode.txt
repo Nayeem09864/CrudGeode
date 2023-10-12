@@ -19,10 +19,6 @@ start locator --name=value [--bind-address=value] [--force(=value)]
  [--http-service-port=value] [--http-service-bind-address=value]
  [--J=value(,value)*]
 
- start locator --name = topu_5360
-
- start locator --name=value [--bind-address=value]
-
 
 --------------- Connection to remote ------------
 IP: 10.42.65.242
@@ -37,16 +33,14 @@ netstat -an
 start locator --name = locator1
 start server --name = server1
 
-connect
+list members
+
+list regions
 
 stop locator --name=locator1
 
 stop server --name=server1
 
-
-list members
-
-list regions
 
 
 locator1 on 10.44.34.180[10334] as locator1 is currently online

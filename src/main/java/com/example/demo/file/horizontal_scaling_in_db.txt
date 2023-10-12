@@ -1,0 +1,35 @@
+Horizontal scaling, also known as scaling out, refers to the process of adding more machines or nodes to a
+distributed system or network to handle increasing loads. In the context of databases, horizontal scaling involves
+adding more servers to a database cluster to distribute the load and improve performance.
+
+Here are some key points about horizontal scaling in databases:
+
+    Addition of Nodes: Instead of increasing the capacity of a single server (vertical scaling), horizontal scaling
+    involves adding more servers to a system. Each new server is a node that contributes to the overall processing
+    power, storage, and memory of the system.
+
+    Load Distribution: In a horizontally scaled database, the load is distributed across multiple nodes. Each node is
+    responsible for a subset of the data or transactions, which helps prevent a single point of failure and allows the
+    system to handle more concurrent requests.
+
+    Improved Performance: Horizontal scaling provides a way to handle increased demand by adding more nodes to the
+    system. This can improve performance and responsiveness, especially in scenarios where the workload is distributed
+    unevenly.
+
+    Elasticity: Horizontal scaling allows for elasticity, meaning that resources can be added or removed dynamically
+    based on demand. This makes it easier to adapt to changing workloads without significant downtime.
+
+    High Availability: By distributing data across multiple nodes, horizontal scaling improves fault tolerance and
+    availability. If one node fails, the others can continue to operate, reducing the risk of service disruptions.
+
+    Cost-Effectiveness: Horizontal scaling can be a more cost-effective solution than vertical scaling because commodity
+    hardware can be used. It also allows organizations to start small and scale as needed, rather than making a large
+    initial investment in a single powerful server.
+
+    Challenges: While horizontal scaling offers many advantages, it also presents challenges. Data distribution and
+    consistency across nodes, as well as the complexity of managing a distributed system, are aspects that need careful
+    consideration.
+
+Popular databases that support horizontal scaling include NoSQL databases like Apache Cassandra, MongoDB, and Couchbase.
+Additionally, some traditional relational databases, like MySQL and PostgreSQL, also offer features or configurations
+that support horizontal scaling.
