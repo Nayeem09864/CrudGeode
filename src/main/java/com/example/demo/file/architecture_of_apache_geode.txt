@@ -1,0 +1,4 @@
+Geode’s management and monitoring system consists of one JMX Manager node (there should only be one) and one or more
+managed nodes within a cluster. All members in the cluster are manageable through MBeans and Geode Management Service
+APIs.
+

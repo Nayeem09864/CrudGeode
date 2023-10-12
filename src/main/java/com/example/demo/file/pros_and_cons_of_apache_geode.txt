@@ -1,0 +1,69 @@
+Apache GEODE - A Wonderful Low Latency & High Consistency In-Memory Data Store
+Alok Pabalkar | TrustRadius Reviewer
+
+Use Cases and Deployment Scope
+We are trying to use it as an experimental alternative to redis as a low latency, in-memory server to save copies of
+static dataloads (configuration data, data that does not change frequently etc) that is saved in our Database (MySQL).
+Everytime when a request is made for the above mentioned data, instead of loading the data from DB we pull it from
+Apache Geode
+
+Pros and Cons
+
+Super Fast data pull/push
+Provided ACID transactions, so it works like a SQL Database
+
+Provides replication & partitioning, so our data is never lost and extraction is super fast. NoSql like properties
+
+Needs more supporting languages. Out of box Python, Nodejs adapters would be wonderful
+Currently it supports just KV Store. But if we could cache documents or timeseries data would be great
+Needs more community support, documentation.
+
+
+Apache Geode Feature Ratings
+NoSQL Databases (7)
+    74.28571428571429%
+    7.4
+
+Performance
+    90%
+    9.0
+Availability
+    100%
+    10.0
+Concurrency
+    100%
+    10.0
+Security
+    N/A
+    N/A
+Scalability
+    80%
+    8.0
+Data model flexibility
+    70%
+    7.0
+Deployment model flexibility
+    80%
+    8.0
+
+Likelihood to Recommend
+The biggest advantage of using Apache Geode is DB like consistency. So for applications whose data needs to be
+in-memory, accessible at low latencies and most importantly writes have to be consistent, should use Apache Geode.
+For our application quite some amount of data is static which we store in MySQL as it can be easily manipulated.
+But since this data is large R/w from DB becomes expensive. So we started using Redis. Redis does a brilliant job, but
+with complex data structures and no query like capability, we have to manage it via code. We are experimenting with
+Apache Geode and it looks promising as now we can query on complex data-structures and get the required data quickly
+and also updates consistent.
+
+
+Return on Investment
+Still experimenting so difficult to quote
+For a small size project/teams might be an overkill as it still has certain learning curve
+For Medium to large projects with complex Data Structures that need to be queried with a fast o/p it definitely works.
+
+Still Experimenting. But looks promising as it has query capabilities over complex data structures
+
+Usability
+8
+Still Experimenting. Initial results are good. we need to figure out if we can completely replace Redis. Cost wise if
+it makes sense to keep both or replacement is feasible.

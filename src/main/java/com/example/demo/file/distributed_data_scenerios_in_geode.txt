@@ -1,4 +1,6 @@
-In Apache Geode, a distributed data scenario refers to a situation where data is distributed across multiple nodes or members in a Geode cluster. Apache Geode is a distributed, in-memory data grid that provides high-performance data management and caching. Here are some key aspects of distributed data scenarios in Apache Geode:
+In Apache Geode, a distributed data scenario refers to a situation where data is distributed across multiple nodes or
+members in a Geode cluster. Apache Geode is a distributed, in-memory data grid that provides high-performance data
+management and caching. Here are some key aspects of distributed data scenarios in Apache Geode:
 
     Clustered Architecture:
         Geode clusters consist of multiple nodes (members) that work together to provide a unified, distributed data storage and processing environment.
