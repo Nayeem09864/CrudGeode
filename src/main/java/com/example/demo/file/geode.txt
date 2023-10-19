@@ -22,10 +22,6 @@ start locator --name=value [--bind-address=value] [--force(=value)]
 
 --------------- Connection to remote ------------
 IP: 10.42.65.242
-SSH user: topu_5360
-pass: topu_5360@,./
-
-ssh topu_5360@10.42.65.242
 
 --------------Post list----------------
 netstat -an | grep 10334
