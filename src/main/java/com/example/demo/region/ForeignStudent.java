@@ -1,5 +1,6 @@
 package com.example.demo.region;
 
+import org.springframework.data.gemfire.mapping.annotation.Indexed;
 import org.springframework.data.gemfire.mapping.annotation.Region;
 
 @Region("ForeignStudents")

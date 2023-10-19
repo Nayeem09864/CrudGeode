@@ -1,0 +1,9 @@
+query --query ='select id,firstName, lastName, addressOfTeacher, basicCourse, optionalCourse, salaryStatement from /Teacher'
+
+query --query ='SELECT * FROM /Teacher'
+
+query --query ='select id,firstName, lastName from /Teacher'
+
+query --query ='select id,firstName, lastName, addressOfTeacher  from /Teacher'
+
+
