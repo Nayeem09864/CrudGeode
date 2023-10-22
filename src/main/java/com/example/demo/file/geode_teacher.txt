@@ -4,6 +4,9 @@ query --query ='SELECT * FROM /Teacher'
 
 query --query ='select id,firstName, lastName from /Teacher'
 
-query --query ='select id,firstName, lastName, addressOfTeacher  from /Teacher'
+query --query ='select id,firstName, lastName, addressOfTeacher.Division  from /Teacher'
 
+query --query ='select id,firstName, lastName, addressOfTeacher.Division, addressOfTeacher.District, addressOfTeacher.Upazila, addressOfTeacher.Village, basicCourse.CourseCode, basicCourse.CourseTitle, basicCourse.Credit, optionalCourse.CourseCode, optionalCourse.CourseTitle, optionalCourse.Credit, salaryStatement.basicSalary, salaryStatement.houseRent, salaryStatement.medicalFee, salaryStatement.educationFee, salaryStatement.washingFee, salaryStatement.incomeTax from /Teacher'
+
+query --query ='select id,firstName, lastName, addressOfTeacher.Division, addressOfTeacher.District, addressOfTeacher.Upazila, basicCourse.CourseCode, basicCourse.Credit, salaryStatement.basicSalary, salaryStatement.houseRent, salaryStatement.medicalFee, salaryStatement.incomeTax from /Teacher'
 
