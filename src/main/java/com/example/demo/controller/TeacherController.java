@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+
 import com.example.demo.region.Author;
 import com.example.demo.region.Teacher;
 import com.example.demo.repository.TeacherRepository;
@@ -22,8 +23,13 @@ public class TeacherController {
 
   @GetMapping("/getTopHundredTeachers")
   public Iterable<Teacher> getTopHundredTeachers() {
+    System.out.println("------API Hit-------");
     Iterable<Teacher> teachers;
+    long startTime = System.currentTimeMillis();
     teachers = teacherRepository.getTopHundredReacher();
+    long endTime = System.currentTimeMillis();
+    long elapsedTime = endTime - startTime;
+    System.out.println("Time Taken For Fetching 100 data from teacher region\n" + elapsedTime + " milliseconds");
     return teachers;
   }
 }

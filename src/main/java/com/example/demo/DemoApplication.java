@@ -30,6 +30,8 @@ import org.springframework.data.gemfire.GemfireTemplate;
 import org.springframework.data.gemfire.config.annotation.EnableEntityDefinedRegions;
 import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.geode.config.annotation.UseMemberName;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @SpringBootApplication
@@ -37,7 +39,6 @@ import org.springframework.geode.config.annotation.UseMemberName;
 @EnableEntityDefinedRegions(basePackageClasses = Customer.class)
 @UseMemberName("DemoApplication")
 public class DemoApplication {
-
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
   }
@@ -106,16 +107,16 @@ public class DemoApplication {
                 salaryStatement);
         teacherRepository.save(teacher);
 
-        for (Long i = 0L; i < 1000000; i++) {
-          Address address1 = new Address("DivisionTwo", "DistrictOne", "UpazilaOne", "villageOne");
-          BasicCourse basicCourse1 = new BasicCourse(1101, "CourseTitleOne", 19.5);
-          OptionalCourse optionalCourse1 = new OptionalCourse(1102, "OptionalCourseOne", 21.5);
-          SalaryStatement salaryStatement1 = new SalaryStatement(18000, 10000, 500, 500, 500, 250);
-          Teacher teacher1 =
-              new Teacher(i+2, "FirstTwo", "LastTwo", address1, basicCourse1, optionalCourse1,
-                  salaryStatement1);
-          teacherRepository.save(teacher1);
-        }
+//        for (Long i = 0L; i < 1000000; i++) {
+//          Address address1 = new Address("DivisionTwo", "DistrictOne", "UpazilaOne", "villageOne");
+//          BasicCourse basicCourse1 = new BasicCourse(1101, "CourseTitleOne", 19.5);
+//          OptionalCourse optionalCourse1 = new OptionalCourse(1102, "OptionalCourseOne", 21.5);
+//          SalaryStatement salaryStatement1 = new SalaryStatement(18000, 10000, 500, 500, 500, 250);
+//          Teacher teacher1 =
+//              new Teacher(i+2, "FirstTwo", "LastTwo", address1, basicCourse1, optionalCourse1,
+//                  salaryStatement1);
+//          teacherRepository.save(teacher1);
+//        }
 
         txManager.commit();
       } catch (CommitConflictException conflict) {

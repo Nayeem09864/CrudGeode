@@ -1,0 +1,23 @@
+NAME
+    query
+IS AVAILABLE
+    true
+SYNOPSIS
+    Run the specified OQL query as a single quoted string and display the results in one or more pages. Limit will default to the value
+    stored in the "APP_FETCH_SIZE" variable. Page size will default to the value stored in the "APP_COLLECTION_LIMIT" variable.
+SYNTAX
+    query --query=value [--file=value] [--interactive=value] [--member=value]
+PARAMETERS
+    query
+        The OQL string.
+        Required: true
+    file
+        File in which to output the results.
+        Required: false
+    interactive
+        Deprecated: Since Geode 1.4. This option has no effect, but is kept around to maintain backwards compatibility with existing scripts.
+        Required: false
+        Default (if the parameter is not specified): false
+    member
+        Name/Id of a member on which to execute the query.
+        Required: false

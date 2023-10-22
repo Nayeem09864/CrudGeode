@@ -10,3 +10,11 @@ query --query ='select id,firstName, lastName, addressOfTeacher.Division, addres
 
 query --query ='select id,firstName, lastName, addressOfTeacher.Division, addressOfTeacher.District, addressOfTeacher.Upazila, basicCourse.CourseCode, basicCourse.Credit, salaryStatement.basicSalary, salaryStatement.houseRent, salaryStatement.medicalFee, salaryStatement.incomeTax from /Teacher'
 
+
+-----------------For time measure ------------
+query --query ='select id,firstName, lastName, addressOfTeacher.Division, addressOfTeacher.District, addressOfTeacher.Upazila, basicCourse.CourseCode, basicCourse.Credit, salaryStatement.basicSalary, salaryStatement.houseRent, salaryStatement.medicalFee, salaryStatement.incomeTax from /Teacher' --time-to-live=300
+---------------------- export data -------------------
+export data --region = Teacher --file = teachers.gfd --member = server1
+
+---------------------- import data -------------------
+import data --region = Teacher --file = teachers.gfd --member = server1
