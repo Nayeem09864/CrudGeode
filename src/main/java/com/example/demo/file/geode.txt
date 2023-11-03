@@ -26,6 +26,9 @@ IP: 10.42.65.242
 --------------Post list----------------
 netstat -an | grep 10334
 
+------- start gfsh (under the bin directory) ------
+./gfsh
+
 start locator --name = locator1
 start server --name = server1
 

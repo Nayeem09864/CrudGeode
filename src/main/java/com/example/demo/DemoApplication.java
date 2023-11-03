@@ -107,16 +107,24 @@ public class DemoApplication {
                 salaryStatement);
         teacherRepository.save(teacher);
 
-//        for (Long i = 0L; i < 1000000; i++) {
-//          Address address1 = new Address("DivisionTwo", "DistrictOne", "UpazilaOne", "villageOne");
-//          BasicCourse basicCourse1 = new BasicCourse(1101, "CourseTitleOne", 19.5);
-//          OptionalCourse optionalCourse1 = new OptionalCourse(1102, "OptionalCourseOne", 21.5);
-//          SalaryStatement salaryStatement1 = new SalaryStatement(18000, 10000, 500, 500, 500, 250);
-//          Teacher teacher1 =
-//              new Teacher(i+2, "FirstTwo", "LastTwo", address1, basicCourse1, optionalCourse1,
-//                  salaryStatement1);
-//          teacherRepository.save(teacher1);
-//        }
+        for (Long i = 0L; i < 10; i++) {
+          String division = "Division" + (i+2);
+          String district = "District" + (i+2);
+          String upazilla = "Upazilla" + (i+2);
+          String village = "Village" + (i+2);
+          Address address1 = new Address(division, district, upazilla, village);
+          String courseTitle = "CourseTitle" + (i+2);
+          BasicCourse basicCourse1 = new BasicCourse(1101, courseTitle, 19.5);
+          String optionalCourseTitle = "OptionalCourseTitle" + (i+2);
+          OptionalCourse optionalCourse1 = new OptionalCourse(1102, optionalCourseTitle, 21.5);
+          SalaryStatement salaryStatement1 = new SalaryStatement(18000, 10000, 500, 500, 500, 250);
+          String firstName = "FirstName" + (i + 2);
+          String lastName = "LastName" + (i + 2);
+          Teacher teacher1 =
+              new Teacher(i+2, firstName, lastName, address1, basicCourse1, optionalCourse1,
+                  salaryStatement1);
+          teacherRepository.save(teacher1);
+        }
 
         txManager.commit();
       } catch (CommitConflictException conflict) {
